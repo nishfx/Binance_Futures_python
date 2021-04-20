@@ -643,7 +643,7 @@ class RestApiRequestImpl(object):
             result = list()
             data_list = json_wrapper.convert_2_array()
             for item in data_list.get_items():
-                element = PositionV2.json_parse(item)
+                element = Position.json_parse(item)
                 result.append(element)
             return result
 
