@@ -13,9 +13,10 @@ class UrlParamsBuilder(object):
             if isinstance(value, list):
                 self.param_map[name] = json.dumps(value)
             elif isinstance(value, float):
-                self.param_map[name] = ('%.20f' % (value))[slice(0, 16)].rstrip('0').rstrip('.')
+                self.param_map[name] = ('%.5f' % value)[slice(0, 16)].rstrip('0').rstrip('.')
             else:
                 self.param_map[name] = str(value)
+
     def put_post(self, name, value):
         if value is not None:
             if isinstance(value, list):
