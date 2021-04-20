@@ -321,9 +321,9 @@ class RequestClient(object):
 
     def get_balance(self) -> any:
         """
-        Future Account Balance (USER_DATA)
+        Future Account Balance V2 (USER_DATA)
 
-        Get /fapi/v1/balance (HMAC SHA256)
+        Get /fapi/v2/balance (HMAC SHA256)
         """
         response = call_sync(self.request_impl.get_balance())
         self.refresh_limits(response[1])
@@ -331,9 +331,9 @@ class RequestClient(object):
 
     def get_account_information(self) -> any:
         """
-        Account Information (USER_DATA)
+        Account Information V2 (USER_DATA)
 
-        GET /fapi/v1/account (HMAC SHA256)
+        GET /fapi/v2/account (HMAC SHA256)
 
         Get current account information.
         """
@@ -385,9 +385,9 @@ class RequestClient(object):
 
     def get_position(self) -> any:
         """
-        Position Information (USER_DATA)
+        Position Information V2 (USER_DATA)
 
-        GET /fapi/v1/positionRisk (HMAC SHA256) Get current account information.
+        GET /fapi/v2/positionRisk (HMAC SHA256) Get current account information.
         """
         response = call_sync(self.request_impl.get_position())
         self.refresh_limits(response[1])

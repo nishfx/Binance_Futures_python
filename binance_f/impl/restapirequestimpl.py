@@ -32,10 +32,10 @@ class RestApiRequestImpl(object):
         request.header.update({"X-MBX-APIKEY": self.__api_key})
         request.url = url + "?" + builder.build_url()
          # For develop
-        print("====== Request ======")
-        print(request)
-        PrintMix.print_data(request)
-        print("=====================")
+        # print("====== Request ======")
+        # print(request)
+        # PrintMix.print_data(request)
+        # print("=====================")
         return request
 
     def __create_request_by_post_with_signature(self, url, builder):
@@ -50,10 +50,10 @@ class RestApiRequestImpl(object):
         request.post_body = builder.post_map
         request.url = url + "?" + builder.build_url()
         # For develop
-        print("====== Request ======")
-        print(request)
-        PrintMix.print_data(request)
-        print("=====================")
+        # print("====== Request ======")
+        # print(request)
+        # PrintMix.print_data(request)
+        # print("=====================")
         return request
 
     def __create_request_by_delete_with_signature(self, url, builder):
@@ -67,10 +67,10 @@ class RestApiRequestImpl(object):
         request.header.update({"X-MBX-APIKEY": self.__api_key})
         request.url = url + "?" + builder.build_url()
         # For develop
-        print("====== Request ======")
-        print(request)
-        PrintMix.print_data(request)
-        print("=====================")
+        # print("====== Request ======")
+        # print(request)
+        # PrintMix.print_data(request)
+        # print("=====================")
         return request
 
     def __create_request_by_get_with_signature(self, url, builder):
@@ -84,10 +84,10 @@ class RestApiRequestImpl(object):
         request.header.update({"X-MBX-APIKEY": self.__api_key})
         request.url = url + "?" + builder.build_url()
         # For develop
-        print("====== Request ======")
-        print(request)
-        PrintMix.print_data(request)
-        print("=====================")
+        # print("====== Request ======")
+        # print(request)
+        # PrintMix.print_data(request)
+        # print("=====================")
         return request
 
     def __create_request_by_put_with_signature(self, url, builder):
@@ -101,10 +101,10 @@ class RestApiRequestImpl(object):
         request.header.update({"X-MBX-APIKEY": self.__api_key})
         request.url = url + "?" + builder.build_url()
         # For develop
-        print("====== Request ======")
-        print(request)
-        PrintMix.print_data(request)
-        print("=====================")
+        # print("====== Request ======")
+        # print(request)
+        # PrintMix.print_data(request)
+        # print("=====================")
         return request
         
     def get_servertime(self):
@@ -536,13 +536,13 @@ class RestApiRequestImpl(object):
     def get_balance(self):
         builder = UrlParamsBuilder()
 
-        request = self.__create_request_by_get_with_signature("/fapi/v1/balance", builder)
+        request = self.__create_request_by_get_with_signature("/fapi/v2/balance", builder)
 
         def parse(json_wrapper):
             result = list()
             data_list = json_wrapper.convert_2_array()
             for item in data_list.get_items():
-                element = Balance.json_parse(item)
+                element = BalanceV2.json_parse(item)
                 result.append(element)
             return result
 
@@ -552,10 +552,10 @@ class RestApiRequestImpl(object):
     def get_account_information(self):
         builder = UrlParamsBuilder()
 
-        request = self.__create_request_by_get_with_signature("/fapi/v1/account", builder)
+        request = self.__create_request_by_get_with_signature("/fapi/v2/account", builder)
 
         def parse(json_wrapper):
-            result = AccountInformation.json_parse(json_wrapper)
+            result = AccountInformationV2.json_parse(json_wrapper)
             return result
 
         request.json_parser = parse
@@ -637,13 +637,13 @@ class RestApiRequestImpl(object):
     def get_position(self):
         builder = UrlParamsBuilder()
 
-        request = self.__create_request_by_get_with_signature("/fapi/v1/positionRisk", builder)
+        request = self.__create_request_by_get_with_signature("/fapi/v2/positionRisk", builder)
 
         def parse(json_wrapper):
             result = list()
             data_list = json_wrapper.convert_2_array()
             for item in data_list.get_items():
-                element = Position.json_parse(item)
+                element = PositionV2.json_parse(item)
                 result.append(element)
             return result
 

@@ -31,3 +31,4 @@ class Position:
         result.isolatedMargin = json_data.get_float("isolatedMargin")
         result.positionSide = json_data.get_string("positionSide")
         return result
+
